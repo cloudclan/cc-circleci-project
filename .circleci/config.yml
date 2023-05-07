@@ -54,9 +54,12 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
+      - hold:
+          type: approval
+          requires:
+            - Docker-Build
       - Docker-Build
       - Push-to-ECR:
           requires:
-            - Docker-Build
+            - hold
 
