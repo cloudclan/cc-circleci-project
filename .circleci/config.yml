@@ -29,7 +29,14 @@ jobs:
           image: flask-app 
           tag: latest
       - run: |
-          docker images          
+          docker images   
+      - run:
+          name: Install trivy
+          command: |
+            sudo curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
+      - run:
+          name: Scan the local image with trivy
+          command: sudo trivy image flask-app    
   
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
