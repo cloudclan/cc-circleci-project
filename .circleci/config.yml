@@ -56,4 +56,7 @@ workflows:
     jobs:
       - say-hello
       - Docker-Build
-      - Push-to-ECR
+      - Push-to-ECR:
+          requires:
+            - Docker-Build
+
