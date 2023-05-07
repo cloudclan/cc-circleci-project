@@ -34,4 +34,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
-      - say-cloudclan
+      - Docker-Build
